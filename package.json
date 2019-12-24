@@ -1,0 +1,28 @@
+{
+  "name": "averd",
+  "version": "0.0.1",
+  "description": "A version of design",
+  "author": "GuessEver <guessever@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/aver-design/averd.git",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "build": "gulp"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "typescript": "^3.7.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@types/react": "^16.9.17",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-webpack": "^1.5.0",
+    "merge2": "^1.3.0"
+  }
+}
