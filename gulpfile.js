@@ -3,6 +3,7 @@ const merge = require('merge2');
 const clean = require('gulp-clean');
 const typescript = require('gulp-typescript')
 const babel = require('gulp-babel');
+const less = require('gulp-less');
 const webpack = require('gulp-webpack');
 
 function clear(dir) {
@@ -28,6 +29,15 @@ function lib() {
   return merge(js, dts);
 }
 
+function style() {
+  return gulp.src('./components/**/*.less')
+    .pipe(gulp.dest('./es'))
+    .pipe(gulp.dest('./lib'))
+    .pipe(less())
+    .pipe(gulp.dest('./es'))
+    .pipe(gulp.dest('./lib'));
+}
+
 function dist() {
   return gulp.src('./lib/index.js')
     .pipe(webpack(require('./webpack.config')))
@@ -36,7 +46,8 @@ function dist() {
 
 exports.default = gulp.series(
   clear(['./es', './lib', './dist']),
-  es,
-  lib,
-  dist,
+  gulp.parallel(
+    gulp.series(es, lib, dist),
+    style,
+  ),
 );
