@@ -5,11 +5,10 @@ const typescript = require('gulp-typescript')
 const babel = require('gulp-babel');
 const less = require('gulp-less');
 
-function clear(dir) {
-  return function clear() {
-    return gulp.src(dir, { read: false, allowEmpty: true })
-      .pipe(clean());
-  }
+
+function clear() {
+  return gulp.src(['./es', './lib'], { read: false, allowEmpty: true })
+    .pipe(clean());
 }
 
 function es() {
@@ -37,10 +36,14 @@ function style() {
     .pipe(gulp.dest('./lib'));
 }
 
-exports.default = gulp.series(
-  clear(['./es', './lib']),
-  gulp.parallel(
-    gulp.series(es, lib),
-    style,
-  ),
+const build = gulp.parallel(
+  gulp.series(es, lib),
+  style,
 );
+
+function watch() {
+  return gulp.watch(['./components/**/*'], build);
+}
+
+exports.default = gulp.series(clear, build);
+exports.watch = watch;

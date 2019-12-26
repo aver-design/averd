@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const WebpackBar = require('webpackbar');
 
 module.exports = {
   mode: 'development',
@@ -28,10 +29,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html'),
     }),
+    new WebpackBar(),
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
     historyApiFallback: true,
+    noInfo: true,
+    overlay: true,
   },
 };
