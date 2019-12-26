@@ -4,7 +4,8 @@ const clean = require('gulp-clean');
 const typescript = require('gulp-typescript')
 const babel = require('gulp-babel');
 const less = require('gulp-less');
-
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
 
 function clear() {
   return gulp.src(['./es', './lib'], { read: false, allowEmpty: true })
@@ -36,9 +37,22 @@ function style() {
     .pipe(gulp.dest('./lib'));
 }
 
-const build = gulp.parallel(
-  gulp.series(es, lib),
-  style,
+function cssImporter() {
+  return gulp.src('./es/**/style/index.js')
+    .pipe(replace('.less', '.css'))
+    .pipe(rename(path => {
+      path.basename = 'css';
+    }))
+    .pipe(gulp.dest('./es'))
+    .pipe(gulp.dest('./lib'));
+}
+
+const build = gulp.series(
+  gulp.parallel(
+    gulp.series(es, lib),
+    style,
+  ),
+  cssImporter,
 );
 
 function watch() {

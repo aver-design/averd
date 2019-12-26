@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Tag } from 'averd';
+import 'averd/es/tag/style';
 
 function App() {
   return (
