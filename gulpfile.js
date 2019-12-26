@@ -4,7 +4,6 @@ const clean = require('gulp-clean');
 const typescript = require('gulp-typescript')
 const babel = require('gulp-babel');
 const less = require('gulp-less');
-const webpack = require('gulp-webpack');
 
 function clear(dir) {
   return function clear() {
@@ -38,16 +37,10 @@ function style() {
     .pipe(gulp.dest('./lib'));
 }
 
-function dist() {
-  return gulp.src('./lib/index.js')
-    .pipe(webpack(require('./webpack.config')))
-    .pipe(gulp.dest('./dist'));
-}
-
 exports.default = gulp.series(
-  clear(['./es', './lib', './dist']),
+  clear(['./es', './lib']),
   gulp.parallel(
-    gulp.series(es, lib, dist),
+    gulp.series(es, lib),
     style,
   ),
 );
