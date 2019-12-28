@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Aver Design Preview</title>
+  </head>
+  <body>
+    <div id="react-content">
+    </div>
+    {% for jsFile in manifest["js"] %}<script src="{{ root }}{{ jsFile }}"></script>
+    {% endfor %}
+  </body>
+</html>
