@@ -1,16 +1,30 @@
 import React from 'react';
 
-function Layout({ data, router, children }) {
-  return (
-    <div>
+class Layout extends React.Component {
+  renderComponentsNav() {
+    const { picked: { components }, router } = this.props;
+    components.sort((a, b) => a.order - b.order);
+    return (
       <div>
-        {Object.keys(data).map(o => (
-          <button key={o} onClick={() => router.push(`/components/${o}`)}>{o}</button>
+        {components.map(o => (
+          <button
+            key={o.key}
+            onClick={() => router.push(`/components/${o.key}`)}
+          >{o.title}</button>
         ))}
       </div>
-      {children}
-    </div>
-  );
+    );
+  }
+
+  render() {
+    const { children } = this.props;
+    return (
+      <div>
+        {this.renderComponentsNav()}
+        {children}
+      </div>
+    );
+  }
 }
 
 export default Layout;
