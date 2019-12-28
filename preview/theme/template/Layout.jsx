@@ -1,4 +1,5 @@
 import React from 'react';
+import { Tag } from 'averd';
 
 class Layout extends React.Component {
   renderComponentsNav() {
@@ -20,6 +21,7 @@ class Layout extends React.Component {
     const { children } = this.props;
     return (
       <div>
+        <Tag>test import averd tag</Tag>
         {this.renderComponentsNav()}
         {children}
       </div>
