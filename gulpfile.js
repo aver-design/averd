@@ -1,11 +1,12 @@
 const gulp = require('gulp');
 const merge = require('merge2');
 const clean = require('gulp-clean');
-const typescript = require('gulp-typescript')
-const babel = require('gulp-babel');
-const less = require('gulp-less');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
+const babel = require('gulp-babel');
+const typescript = require('gulp-typescript');
+const less = require('gulp-less');
+const postcss = require('gulp-postcss');
 
 function clear() {
   return gulp.src(['./es', './lib'], { read: false, allowEmpty: true })
@@ -30,6 +31,7 @@ function lib() {
 
 function style() {
   return gulp.src('./components/**/*.less')
+    .pipe(postcss([require('autoprefixer')]))
     .pipe(gulp.dest('./es'))
     .pipe(gulp.dest('./lib'))
     .pipe(less())
