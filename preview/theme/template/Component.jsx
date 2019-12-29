@@ -15,6 +15,12 @@ class Component extends React.Component {
         <hr />
         <div>{demo.meta.title}</div>
         {utils.toReactComponent(demo.content)}
+        {demo.previews.map((preview, idx) => (
+          <div key={idx}>
+            {preview.preview()}
+            {utils.toReactComponent(preview.highlight)}
+          </div>
+        ))}
       </div>
     ));
   }

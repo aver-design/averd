@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   lazyLoad: false,
   pick: {
@@ -11,6 +13,10 @@ module.exports = {
       }
     },
   },
+  plugins: [
+    'bisheng-plugin-toc',
+    path.resolve(__dirname, 'plugin-preview'),
+  ],
   routes: [
     {
       path: '/',
