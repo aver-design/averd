@@ -8,7 +8,6 @@ class Component extends React.PureComponent {
   };
 
   componentDidMount() {
-    console.log(this.props);
     const { params, data } = this.props;
     const { doc, demo } = data[params.component];
     const demos = Object.values(demo)

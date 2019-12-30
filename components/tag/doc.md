@@ -4,4 +4,4 @@ category: Data Display
 title: Tag
 ---
 
-Tag introduction
+Tag for classification.

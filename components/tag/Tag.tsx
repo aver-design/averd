@@ -1,5 +1,7 @@
 import * as React from 'react';
 
-const Tag: React.FC = ({ children }) => <div className="averd-tag">{children}</div>;
+export interface TagProps {}
+
+const Tag: React.FC<TagProps> = ({ children }) => <div className="averd-tag">{children}</div>;
 
 export default Tag;

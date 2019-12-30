@@ -3,7 +3,7 @@ order: 0
 title: Tag - Basic
 ---
 
-Usage of basic Tag.
+Basic usage of Tag.
 
 ```jsx
 import { Tag } from 'averd';
