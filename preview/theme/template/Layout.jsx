@@ -1,29 +1,42 @@
 import React from 'react';
-import { Tag } from 'averd';
+import _ from 'lodash';
 
-class Layout extends React.Component {
-  renderComponentsNav() {
-    const { picked: { components }, router } = this.props;
-    components.sort((a, b) => a.order - b.order);
-    return (
-      <div>
-        {components.map(o => (
-          <button
-            key={o.key}
-            onClick={() => router.push(`/components/${o.key}`)}
-          >{o.title}</button>
-        ))}
-      </div>
-    );
+import '../style';
+
+class Layout extends React.PureComponent {
+  state = {
+    componentList: [],
+  };
+
+  componentDidMount() {
+    const { picked } = this.props;
+    const componentList = _.cloneDeep(picked.components);
+    componentList.sort((a, b) => a.order - b.order);
+    this.setState({ componentList });
   }
 
   render() {
     const { children } = this.props;
+    const { componentList } = this.state;
     return (
-      <div>
-        <Tag>test import averd tag</Tag>
-        {this.renderComponentsNav()}
-        {children}
+      <div className="averd-preview">
+        <div className="header">
+          <div className="header-item">Aver Design</div>
+        </div>
+        <div className="side">
+          {componentList.map(o => (
+            <div
+              key={o.key}
+              className="side-item"
+              onClick={() => router.push(`/components/${o.key}`)}
+            >
+              {o.title}
+            </div>
+          ))}
+        </div>
+        <div className="content">
+          {children}
+        </div>
       </div>
     );
   }

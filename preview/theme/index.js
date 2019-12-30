@@ -4,7 +4,7 @@ module.exports = {
   lazyLoad: false,
   pick: {
     components(markdownData) {
-      const r = /^components\/(.+?)\/index.md$/.exec(markdownData.meta.filename);
+      const r = /^components\/(.+?)\/doc.md$/.exec(markdownData.meta.filename);
       if (r) {
         return {
           key: r[1],
@@ -24,7 +24,7 @@ module.exports = {
       childRoutes: [
         {
           path: '/components/:component',
-          component: './template/Component',
+          component: './template/ComponentDoc',
         },
       ],
     },

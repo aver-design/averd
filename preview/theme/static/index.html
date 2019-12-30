@@ -6,7 +6,8 @@
   <body>
     <div id="react-content">
     </div>
-    {% for jsFile in manifest["js"] %}<script src="{{ root }}{{ jsFile }}"></script>
+    {% for jsFile in manifest["js"] %}
+    <script src="{{ root }}{{ jsFile }}"></script>
     {% endfor %}
   </body>
 </html>
