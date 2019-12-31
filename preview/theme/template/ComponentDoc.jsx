@@ -3,18 +3,17 @@ import React from 'react';
 class Component extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      doc: null,
-      demos: [],
-    };
-  }
 
-  componentDidMount() {
-    const { params, data } = this.props;
+    const { params, data } = props;
     const { doc, demo } = data[params.component];
-    const demos = Object.values(demo).map(o => ({ ...o, preview: o.previews[0] }));
-    demos.sort((a, b) => a.order - b.order);
+    const demos = Object.values(demo)
+      .map(o => ({ ...o, preview: o.previews[0] }))
+      .sort((a, b) => a.order - b.order);
     this.setState({ doc, demos });
+    this.state = {
+      doc,
+      demos,
+    };
   }
 
   renderDoc() {

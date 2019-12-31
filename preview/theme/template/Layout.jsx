@@ -1,21 +1,15 @@
 import React from 'react';
-import _ from 'lodash';
 
 import '../style';
 
 class Layout extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      componentList: [],
-    };
-  }
 
-  componentDidMount() {
-    const { picked } = this.props;
-    const componentList = _.cloneDeep(picked.components);
-    componentList.sort((a, b) => a.order - b.order);
-    this.setState({ componentList });
+    const { components } = props.picked;
+    this.state = {
+      componentList: [...components].sort((a, b) => a.order - b.order),
+    };
   }
 
   render() {
@@ -24,7 +18,9 @@ class Layout extends React.PureComponent {
     return (
       <div className="averd-preview">
         <div className="header">
-          <div className="header-item">Aver Design</div>
+          <div className="header-item" onClick={() => router.push('/')}>
+            Aver Design
+          </div>
         </div>
         <div className="side">
           {componentList.map(o => (
