@@ -31,10 +31,10 @@ function lib() {
 
 function style() {
   return gulp.src('./components/**/*.less')
-    .pipe(postcss([require('autoprefixer')]))
     .pipe(gulp.dest('./es'))
     .pipe(gulp.dest('./lib'))
     .pipe(less())
+    .pipe(postcss([require('autoprefixer')]))
     .pipe(gulp.dest('./es'))
     .pipe(gulp.dest('./lib'));
 }

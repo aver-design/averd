@@ -1,0 +1,36 @@
+@import "../../../components/style/color.less";
+
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  .palette-item {
+    width: calc((100% - 16px * 3) / 4);
+    margin-right: 16px;
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    margin-bottom: 32px;
+  }
+  .color-item {
+    text-align: center;
+    padding: 16px;
+  }
+
+  // generate palette colors
+  .palette-loop (@color-index) when (@color-index > 0) {
+    @color-name: extract(@preset-colors, @color-index);
+
+    .level-loop (@level) when (@level > 0) {
+      .palette-@{color-name}-@{level} {
+        @color: ~"@{color-name}-@{level}";
+        background: @@color;
+      }
+      .level-loop(@level - 1);
+    }
+    .level-loop(10);
+
+    .palette-loop(@color-index - 1);
+  }
+  .palette-loop(length(@preset-colors));
+}

@@ -1,3 +1,3 @@
-import '../../style/index.less';
+import '../../style/common.less';
 
 import './index.less';

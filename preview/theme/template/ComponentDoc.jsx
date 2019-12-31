@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Component extends React.PureComponent {
+class ComponentDoc extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -24,7 +24,7 @@ class Component extends React.PureComponent {
     }
     return (
       <div>
-        <h2>{doc.meta.title}</h2>
+        <h1>{doc.meta.title}</h1>
         {utils.toReactComponent(doc.content)}
       </div>
     );
@@ -55,4 +55,4 @@ class Component extends React.PureComponent {
   }
 }
 
-export default Component;
+export default ComponentDoc;

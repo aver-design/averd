@@ -21,6 +21,10 @@ module.exports = {
       component: './template/Layout',
       childRoutes: [
         {
+          path: '/colors',
+          component: './template/ColorDoc',
+        },
+        {
           path: '/components/:component',
           component: './template/ComponentDoc',
         },

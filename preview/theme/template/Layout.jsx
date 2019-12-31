@@ -12,9 +12,30 @@ class Layout extends React.PureComponent {
     };
   }
 
+  renderMenus() {
+    const { router } = this.props;
+    const { componentList } = this.state;
+    const menus = [
+      {
+        key: 'colors',
+        title: 'Colors',
+        path: '/colors',
+      },
+      ...componentList.map(o => ({
+        key: `component-${o.key}`,
+        title: o.title,
+        path: `/components/${o.key}`,
+      })),
+    ];
+    return menus.map(o => (
+      <div key={o.key} className="side-item" onClick={() => router.push(o.path)}>
+        {o.title}
+      </div>
+    ));
+  }
+
   render() {
     const { children, router } = this.props;
-    const { componentList } = this.state;
     return (
       <div className="averd-preview">
         <div className="header">
@@ -22,17 +43,7 @@ class Layout extends React.PureComponent {
             Aver Design
           </div>
         </div>
-        <div className="side">
-          {componentList.map(o => (
-            <div
-              key={o.key}
-              className="side-item"
-              onClick={() => router.push(`/components/${o.key}`)}
-            >
-              {o.title}
-            </div>
-          ))}
-        </div>
+        <div className="side">{this.renderMenus()}</div>
         <div className="content">{children}</div>
       </div>
     );
