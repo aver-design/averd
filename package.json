@@ -14,9 +14,11 @@
     "start": "npm run build && concurrently \"npm:dev\" \"npm:preview\"",
     "lint": "npm run lint:es && npm run lint:style",
     "lint:es": "eslint --ext .ts,.tsx ./components",
-    "lint:style": "stylelint --syntax less 'components/**/*.less'",
+    "lint:preview": "eslint --ext .js,.jsx ./preview",
+    "lint:style": "stylelint --syntax less '{components,preview}/**/*.less'",
     "lint-fix": "npm run lint-fix:es && npm run lint-fix:style",
     "lint-fix:es": "npm run lint:es -- --fix",
+    "lint-fix:preview": "npm run lint:preview -- --fix",
     "lint-fix:style": "npm run lint:style -- --fix"
   },
   "browserslist": [

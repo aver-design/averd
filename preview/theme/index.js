@@ -11,12 +11,10 @@ module.exports = {
           ...markdownData.meta,
         };
       }
+      return null;
     },
   },
-  plugins: [
-    'bisheng-plugin-toc',
-    path.resolve(__dirname, 'plugin-preview'),
-  ],
+  plugins: ['bisheng-plugin-toc', path.resolve(__dirname, 'plugin-preview')],
   routes: [
     {
       path: '/',

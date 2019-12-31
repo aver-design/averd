@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const path = require('path');
 
 module.exports = {
@@ -16,7 +17,7 @@ module.exports = {
     config.resolve.alias = {
       'averd/lib': path.join(__dirname, '..', 'components'),
       'averd/es': path.join(__dirname, '..', 'components'),
-      'averd': path.join(__dirname, '..'),
+      averd: path.join(__dirname, '..'),
     };
     return config;
   },

@@ -1,17 +1,18 @@
 import React from 'react';
-import _ from 'lodash';
 
 class Component extends React.PureComponent {
-  state = {
-    doc: null,
-    demos: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      doc: null,
+      demos: [],
+    };
+  }
 
   componentDidMount() {
     const { params, data } = this.props;
     const { doc, demo } = data[params.component];
-    const demos = Object.values(demo)
-      .map(o => ({ ...o, preview: o.previews[0] }));
+    const demos = Object.values(demo).map(o => ({ ...o, preview: o.previews[0] }));
     demos.sort((a, b) => a.order - b.order);
     this.setState({ doc, demos });
   }
@@ -38,13 +39,9 @@ class Component extends React.PureComponent {
         <div className="demo-preview">
           {demo.preview.preview()}
           <div className="demo-title">{demo.meta.title}</div>
-          <div className="demo-description">
-            {utils.toReactComponent(demo.content)}
-          </div>
+          <div className="demo-description">{utils.toReactComponent(demo.content)}</div>
         </div>
-        <div className="demo-code">
-          {utils.toReactComponent(demo.preview.highlight)}
-        </div>
+        <div className="demo-code">{utils.toReactComponent(demo.preview.highlight)}</div>
       </div>
     ));
   }

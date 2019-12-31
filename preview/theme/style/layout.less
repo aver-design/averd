@@ -1,21 +1,21 @@
 .header {
-  border: 1px solid #ddd;
-  border-top: 0;
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
-  height: 64px;
-
+  left: 0;
   display: flex;
+  height: 64px;
+  border: 1px solid #ddd;
+  border-top: 0;
+
   .header-item {
     display: flex;
     align-items: center;
     height: 64px;
     padding: 8px 24px;
-
     cursor: pointer;
-    transition: all .3s;
+    transition: all 0.3s;
+
     &:hover {
       background: #fff;
       box-shadow: 0 0 4px #ddd;
@@ -24,24 +24,22 @@
 }
 
 .side {
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  width: 256px;
   border: 1px solid #ddd;
   border-top: 0;
 
-  position: fixed;
-  top: 64px;
-  left: 0;
-  bottom: 0;
-  width: 256px;
-
   .side-item {
+    padding: 16px;
     border: 1px solid #ddd;
     border-top: 0;
     border-right: 0;
-
-    padding: 16px;
-
     cursor: pointer;
-    transition: all .3s;
+    transition: all 0.3s;
+
     &:hover {
       box-shadow: 2px 2px 4px #ddd;
     }

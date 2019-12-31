@@ -4,9 +4,12 @@ import _ from 'lodash';
 import '../style';
 
 class Layout extends React.PureComponent {
-  state = {
-    componentList: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      componentList: [],
+    };
+  }
 
   componentDidMount() {
     const { picked } = this.props;
@@ -16,7 +19,7 @@ class Layout extends React.PureComponent {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, router } = this.props;
     const { componentList } = this.state;
     return (
       <div className="averd-preview">
@@ -34,9 +37,7 @@ class Layout extends React.PureComponent {
             </div>
           ))}
         </div>
-        <div className="content">
-          {children}
-        </div>
+        <div className="content">{children}</div>
       </div>
     );
   }
