@@ -49,17 +49,11 @@ function cssImporter() {
     .pipe(gulp.dest('./lib'));
 }
 
-const build = gulp.series(
+exports.default = gulp.series(
+  clear,
   gulp.parallel(
     gulp.series(es, lib),
     style,
   ),
   cssImporter,
 );
-
-function watch() {
-  return gulp.watch(['./components/**/*'], build);
-}
-
-exports.default = gulp.series(clear, build);
-exports.watch = watch;
