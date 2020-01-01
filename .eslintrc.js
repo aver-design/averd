@@ -8,6 +8,7 @@ module.exports = {
   ],
   plugins: [
     '@typescript-eslint/eslint-plugin',
+    'jest',
     'prettier',
   ],
   rules: {
@@ -23,4 +24,7 @@ module.exports = {
     'react/prop-types': 'off',
     'no-console': 'off',
   },
+  env: {
+    'jest/globals': true
+  }
 }
