@@ -9,7 +9,6 @@ class ComponentDoc extends React.PureComponent {
     const demos = Object.values(demo)
       .map(o => ({ ...o, preview: o.previews[0] }))
       .sort((a, b) => a.order - b.order);
-    this.setState({ doc, demos });
     this.state = {
       doc,
       demos,

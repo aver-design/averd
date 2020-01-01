@@ -1,29 +1,43 @@
 import React from 'react';
 
 class ColorDoc extends React.PureComponent {
-  // eslint-disable-next-line class-methods-use-this
+  colors = [
+    'magenta',
+    'red',
+    'volcano',
+    'orange',
+    'gold',
+    'yellow',
+    'lime',
+    'green',
+    'cyan',
+    'blue',
+    'geekblue',
+    'purple',
+  ];
+
+  renderColorCircle() {
+    return (
+      <div>
+        <h2>Color Circle</h2>
+        <div className="color-circle">
+          {this.colors.map((color, idx) => (
+            <div key={color} className={`color-item circle-${idx} palette-${color}-6`}>
+              {color}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   renderColorPalette() {
-    const colors = [
-      'blue',
-      'purple',
-      'cyan',
-      'green',
-      'magenta',
-      'pink',
-      'red',
-      'orange',
-      'yellow',
-      'volcano',
-      'geekblue',
-      'lime',
-      'gold',
-    ];
     const levels = new Array(10).fill(0).map((o, idx) => idx + 1);
     return (
       <div>
         <h2>Palette</h2>
         <div className="color-palette">
-          {colors.map(color => (
+          {this.colors.map(color => (
             <div key={color} className="palette-item">
               {levels.map(level => (
                 <div
@@ -45,6 +59,7 @@ class ColorDoc extends React.PureComponent {
     return (
       <div>
         <h1>Colors</h1>
+        {this.renderColorCircle()}
         {this.renderColorPalette()}
       </div>
     );
