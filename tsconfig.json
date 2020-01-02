@@ -13,5 +13,10 @@
     "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "declaration": true
+  },
+  "typeAcquisition": {
+    "include": [
+      "jest"
+    ]
   }
 }
