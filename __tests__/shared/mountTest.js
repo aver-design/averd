@@ -1,15 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-function mountTest(Component) {
+export default function mountTest(Component) {
   describe('mount test', () => {
-    test('component could be mounted and unmounted', () => {
-      const wrapper = mount(<Component />);
+    it('could be mounted and unmounted', () => {
+      const component = mount(<Component />);
       expect(() => {
-        wrapper.unmount();
+        component.unmount();
       }).not.toThrow();
     });
   });
 }
-
-export default mountTest;

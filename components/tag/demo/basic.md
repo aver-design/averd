@@ -1,6 +1,6 @@
 ---
 order: 0
-title: Tag - Basic
+title: Basic
 ---
 
 Basic usage of Tag.

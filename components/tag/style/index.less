@@ -1,10 +1,35 @@
 @import "../../style/theme.less";
+@import "../../style/color.less";
 
 .averd-tag {
   display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
   padding: 3px 6px;
   font-size: 0.85rem;
   background: @background-color;
   border: 1px solid @border-color;
   border-radius: @border-radius;
+}
+
+.preset-loop (@color-index) when (@color-index > 0) {
+  @color-name: extract(@preset-colors, @color-index);
+
+  .averd-tag-@{color-name} {
+    @background-color-name: ~"@{color-name}-2";
+    @border-color-name: ~"@{color-name}-4";
+    @font-color-name: ~"@{color-name}-6";
+
+    color: @@font-color-name;
+    background-color: @@background-color-name;
+    border-color: @@border-color-name;
+  }
+
+  .preset-loop(@color-index - 1);
+}
+.preset-loop(length(@preset-colors));
+
+.averd-tag-with-color {
+  color: #fff;
+  border-color: transparent;
 }
