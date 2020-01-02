@@ -12,9 +12,7 @@
   border-radius: @border-radius;
 }
 
-.preset-loop (@color-index) when (@color-index > 0) {
-  @color-name: extract(@preset-colors, @color-index);
-
+each(@preset-colors, .(@color-name) {
   .averd-tag-@{color-name} {
     @background-color-name: ~"@{color-name}-2";
     @border-color-name: ~"@{color-name}-4";
@@ -24,10 +22,7 @@
     background-color: @@background-color-name;
     border-color: @@border-color-name;
   }
-
-  .preset-loop(@color-index - 1);
-}
-.preset-loop(length(@preset-colors));
+});
 
 .averd-tag-with-color {
   color: #fff;

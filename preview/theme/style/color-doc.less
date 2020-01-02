@@ -18,14 +18,12 @@
     padding: 16px;
   }
 
-  .circle-loop (@i) when (@i > 0) {
-    .circle-@{i} {
-      @deg: @i * 30deg;
+  each(range(12), {
+    .circle-@{value} {
+      @deg: @value * 30deg;
       transform: rotate(@deg);
     }
-    .circle-loop(@i - 1);
-  }
-  .circle-loop(12);
+  });
 }
 
 .color-palette {
@@ -47,18 +45,11 @@
 }
 
 // generate palette colors
-.palette-loop (@color-index) when (@color-index > 0) {
-  @color-name: extract(@preset-colors, @color-index);
-
-  .level-loop (@level) when (@level > 0) {
+each(@preset-colors, .(@color-name) {
+  each(range(10), .(@level) {
     .palette-@{color-name}-@{level} {
       @color: ~"@{color-name}-@{level}";
       background: @@color;
     }
-    .level-loop(@level - 1);
-  }
-  .level-loop(10);
-
-  .palette-loop(@color-index - 1);
-}
-.palette-loop(length(@preset-colors));
+  });
+});
