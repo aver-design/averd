@@ -1,24 +1,11 @@
 import * as React from 'react';
+import { presetColors } from '../style/color';
 
 export interface TagProps {
   color: string;
 }
 
 const Tag: React.FC<TagProps> = ({ children, color }) => {
-  const presetColors = [
-    'magenta',
-    'red',
-    'volcano',
-    'orange',
-    'gold',
-    'yellow',
-    'lime',
-    'green',
-    'cyan',
-    'blue',
-    'geekblue',
-    'purple',
-  ];
   if (presetColors.indexOf(color) !== -1) {
     return <div className={`averd-tag averd-tag-${color}`}>{children}</div>;
   }

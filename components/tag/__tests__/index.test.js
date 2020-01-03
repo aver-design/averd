@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import mountTest from '../../../__tests__/shared/mountTest';
 import Tag from '..';
+import { presetColors } from '../../style/color';
 
 describe('Tag', () => {
   mountTest(Tag);
@@ -15,21 +16,7 @@ describe('Tag', () => {
     });
 
     it('should be well rendered with preset colors', () => {
-      const colors = [
-        'magenta',
-        'red',
-        'volcano',
-        'orange',
-        'gold',
-        'yellow',
-        'lime',
-        'green',
-        'cyan',
-        'blue',
-        'geekblue',
-        'purple',
-      ];
-      colors.forEach(color => {
+      presetColors.forEach(color => {
         const component = shallow(<Tag color={color}>{color}</Tag>);
         expect(component.hasClass(`averd-tag-${color}`));
       });
