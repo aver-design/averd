@@ -11,11 +11,11 @@
     "build": "gulp",
     "preview": "NODE_ENV=development bisheng start -c ./preview/bisheng.config.js",
     "test": "jest",
-    "lint": "npm run lint:es && npm run lint:style",
+    "lint": "npm run lint:es && npm run lint:preview && npm run lint:style",
     "lint:es": "eslint --ext .ts,.tsx ./components",
     "lint:preview": "eslint --ext .js,.jsx ./preview",
-    "lint:style": "stylelint --syntax less '{components,preview}/**/*.less'",
-    "lint-fix": "npm run lint-fix:es && npm run lint-fix:style",
+    "lint:style": "stylelint --syntax=less '{components,preview}/**/*.less'",
+    "lint-fix": "npm run lint-fix:es && npm run lint-fix:preview && npm run lint-fix:style",
     "lint-fix:es": "npm run lint:es -- --fix",
     "lint-fix:preview": "npm run lint:preview -- --fix",
     "lint-fix:style": "npm run lint:style -- --fix"
@@ -33,7 +33,11 @@
       "eslint --fix",
       "git add"
     ],
-    "components/**/*.less": [
+    "preview/**/*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "{components,preview}/**/*.less": [
       "stylelint --syntax=less --fix",
       "git add"
     ]

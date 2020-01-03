@@ -1,7 +1,29 @@
 @import "../../../components/style/color.less";
 
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+
+  .palette-item {
+    width: calc((100% - 16px * 3) / 4);
+    margin-right: 16px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    margin-bottom: 32px;
+  }
+
+  .color-item {
+    padding: 16px;
+    text-align: center;
+  }
+}
+
 .color-circle {
   position: relative;
+
   .color-item {
     &:nth-child(n+2) {
       position: absolute;
@@ -11,11 +33,11 @@
 
     width: 300px;
     height: 300px;
+    padding: 16px;
+    color: #fff;
+    text-align: center;
     border-radius: 50%;
     clip-path: polygon(35% 0, 50% 50%, 65% 0, 25% 0);
-    text-align: center;
-    color: #fff;
-    padding: 16px;
   }
 
   each(range(12), {
@@ -24,24 +46,6 @@
       transform: rotate(@deg);
     }
   });
-}
-
-.color-palette {
-  display: flex;
-  flex-wrap: wrap;
-  .palette-item {
-    width: calc((100% - 16px * 3) / 4);
-    margin-right: 16px;
-    &:nth-child(4n) {
-      margin-right: 0;
-    }
-
-    margin-bottom: 32px;
-  }
-  .color-item {
-    text-align: center;
-    padding: 16px;
-  }
 }
 
 // generate palette colors
