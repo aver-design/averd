@@ -10,6 +10,7 @@
   "scripts": {
     "build": "gulp",
     "preview": "NODE_ENV=development bisheng start -c ./preview/bisheng.config.js",
+    "preview:build": "NODE_ENV=production bisheng build -c ./preview/bisheng.config.js",
     "test": "jest",
     "lint": "npm run lint:es && npm run lint:preview && npm run lint:style",
     "lint:es": "eslint --ext .ts,.tsx ./components",

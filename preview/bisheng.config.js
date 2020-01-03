@@ -12,7 +12,7 @@ module.exports = {
     javascriptEnabled: true,
   },
   webpackConfig(config) {
-    config.mode = 'development';
+    config.mode = process.env.NODE_ENV || 'development';
     config.devtool = 'source-map';
     config.resolve.alias = {
       'averd/lib': path.join(__dirname, '..', 'components'),
