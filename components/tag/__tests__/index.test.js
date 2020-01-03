@@ -35,6 +35,7 @@ describe('Tag', () => {
       expect(component.hasClass(`averd-tag-${color}`)).toBe(false);
       expect(component.hasClass(`averd-tag-with-color`)).toBe(false);
     });
+
     it('should render default color with illegal color hex string', () => {
       const color = '#1f2f3g'; // it's not a legal hex string
       const component = shallow(<Tag color={color}>{color}</Tag>);
