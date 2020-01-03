@@ -14,10 +14,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-      run: |
-        node -v
     - name: npm install, build, and test
       run: |
+        node -v
+        npm -v
+        yarn -v
         yarn install --frozen-lockfile
         yarn build
         yarn lint
