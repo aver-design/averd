@@ -10,7 +10,7 @@
     <script src="{{ root }}{{ jsFile }}"></script>
     {% endfor %}
     {% for cssFile in manifest["css"] %}
-    <script src="{{ root }}{{ cssFile }}"></script>
+    <link rel="stylesheet" href="{{ root }}{{ cssFile }}">
     {% endfor %}
   </body>
 </html>
