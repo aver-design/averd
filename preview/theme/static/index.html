@@ -9,5 +9,8 @@
     {% for jsFile in manifest["js"] %}
     <script src="{{ root }}{{ jsFile }}"></script>
     {% endfor %}
+    {% for cssFile in manifest["css"] %}
+    <script src="{{ root }}{{ cssFile }}"></script>
+    {% endfor %}
   </body>
 </html>
