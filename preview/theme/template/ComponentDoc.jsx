@@ -1,23 +1,24 @@
 import React from 'react';
 
 class ComponentDoc extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  getDoc() {
+    const { params, data } = this.props;
+    const { doc } = data[params.component];
+    return doc;
+  }
 
-    const { params, data } = props;
-    const { doc, demo } = data[params.component];
+  getDemos() {
+    const { params, data } = this.props;
+    const { demo } = data[params.component];
     const demos = Object.values(demo)
       .map(o => ({ ...o, preview: o.previews[0] }))
       .sort((a, b) => a.order - b.order);
-    this.state = {
-      doc,
-      demos,
-    };
+    return demos;
   }
 
   renderDoc() {
     const { utils } = this.props;
-    const { doc } = this.state;
+    const doc = this.getDoc();
     if (!doc) {
       return null;
     }
@@ -31,7 +32,7 @@ class ComponentDoc extends React.PureComponent {
 
   renderDemos() {
     const { utils } = this.props;
-    const { demos } = this.state;
+    const demos = this.getDemos();
     return demos.map(demo => (
       <div key={demo.meta.filename} className="demo-box">
         <div className="demo-preview">
