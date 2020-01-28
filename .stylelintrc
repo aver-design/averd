@@ -5,5 +5,11 @@
   ],
   "plugins": [
     "stylelint-order"
+  ],
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx"
   ]
 }
