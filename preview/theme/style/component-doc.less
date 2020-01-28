@@ -21,11 +21,29 @@
   .demo-code {
     flex: 1;
     width: 0;
-    padding: 16px;
     border-left: 1px solid #ddd;
 
-    pre {
-      margin: 0;
+    .code-block {
+      position: relative;
+
+      pre {
+        margin: 0;
+        padding: 16px;
+        overflow: auto;
+      }
+
+      & + .code-block {
+        border-top: 1px solid #ddd;
+      }
+
+      .code-language {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        color: #aaa;
+        text-transform: uppercase;
+        user-select: none;
+      }
     }
   }
 }

@@ -12,24 +12,26 @@ module.exports = function(markdownData) {
 
   if (Array.isArray(markdownData.content)) {
     const content = [];
-    const previews = [];
-    markdownData.content = markdownData.content.map(node => {
+    const sourceCode = {};
+    markdownData.content = markdownData.content.forEach(node => {
       const [tagName, attr] = node;
-      if (tagName === 'pre' && attr && attr.lang === 'jsx') {
+      if (tagName === 'pre') {
+        const { lang: language } = attr;
         const code = node[2][1];
-        const processedCode = transformer(code, babelConfig, false);
-        const preview = {
-          __BISHENG_EMBEDED_CODE: true,
-          code: processedCode,
-        };
-        previews.push({ code, highlight: node, preview });
+        sourceCode[language] = code;
       } else {
         content.push(node);
       }
     });
 
+    const preview = {
+      __BISHENG_EMBEDED_CODE: true,
+      code: transformer(sourceCode.jsx, babelConfig, false), // transfer jsx to es5
+    };
+
     markdownData.content = content;
-    markdownData.previews = previews;
+    markdownData.sourceCode = sourceCode;
+    markdownData.preview = preview;
   }
 
   return markdownData;

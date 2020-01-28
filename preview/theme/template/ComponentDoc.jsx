@@ -10,10 +10,7 @@ class ComponentDoc extends React.PureComponent {
   getDemos() {
     const { params, data } = this.props;
     const { demo } = data[params.component];
-    const demos = Object.values(demo)
-      .map(o => ({ ...o, preview: o.previews[0] }))
-      .sort((a, b) => a.order - b.order);
-    return demos;
+    return Object.values(demo).sort((a, b) => a.order - b.order);
   }
 
   renderDoc() {
@@ -36,11 +33,18 @@ class ComponentDoc extends React.PureComponent {
     return demos.map(demo => (
       <div key={demo.meta.filename} className="demo-box">
         <div className="demo-preview">
-          {demo.preview.preview()}
+          {demo.preview()}
           <div className="demo-title">{demo.meta.title}</div>
           <div className="demo-description">{utils.toReactComponent(demo.content)}</div>
         </div>
-        <div className="demo-code">{utils.toReactComponent(demo.preview.highlight)}</div>
+        <div className="demo-code">
+          {Object.keys(demo.sourceCode).map(language => (
+            <div key={language} className="code-block">
+              <div className="code-language">{language}</div>
+              <pre>{utils.toReactComponent(demo.sourceCode[language])}</pre>
+            </div>
+          ))}
+        </div>
       </div>
     ));
   }
