@@ -1,4 +1,16 @@
 import React from 'react';
+import less from 'less';
+
+function DemoStyle({ css, demoId }) {
+  const [wrappedCss, setWrappedCss] = React.useState('');
+  const wrappedLess = `[data-demo="${demoId}"] { ${css} }`;
+  React.useEffect(() => {
+    less.render(wrappedLess).then(r => {
+      setWrappedCss(r.css);
+    });
+  }, [css]);
+  return React.createElement('style', null, wrappedCss);
+}
 
 class ComponentDoc extends React.PureComponent {
   getDoc() {
@@ -30,23 +42,31 @@ class ComponentDoc extends React.PureComponent {
   renderDemos() {
     const { utils } = this.props;
     const demos = this.getDemos();
-    return demos.map(demo => (
-      <div key={demo.meta.filename} className="demo-box">
-        <div className="demo-preview">
-          {demo.preview()}
-          <div className="demo-title">{demo.meta.title}</div>
-          <div className="demo-description">{utils.toReactComponent(demo.content)}</div>
+    return demos.map(demo => {
+      const demoId = Math.random()
+        .toString(16)
+        .substr(2, 8);
+      return (
+        <div key={demo.meta.filename} className="demo-box">
+          <div className="demo-preview">
+            <div data-demo={demoId}>{demo.preview()}</div>
+            <DemoStyle demoId={demoId} css={demo.sourceCode.css} />
+            <div className="demo-title">{demo.meta.title}</div>
+            <div className="demo-description">{utils.toReactComponent(demo.content)}</div>
+          </div>
+          <div className="demo-code">
+            {Object.keys(demo.sourceCode).map(language => (
+              <div key={language} className="code-block">
+                <div className="code-language">{language}</div>
+                <pre>
+                  <code>{demo.sourceCode[language]}</code>
+                </pre>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="demo-code">
-          {Object.keys(demo.sourceCode).map(language => (
-            <div key={language} className="code-block">
-              <div className="code-language">{language}</div>
-              <pre>{utils.toReactComponent(demo.sourceCode[language])}</pre>
-            </div>
-          ))}
-        </div>
-      </div>
-    ));
+      );
+    });
   }
 
   render() {

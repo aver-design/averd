@@ -11,7 +11,7 @@ import { Layout } from 'averd';
 const { Header, Side, Content, Footer } = Layout;
 
 ReactDOM.render(
-  <div>
+  <>
     <Layout>
       <Header>Header</Header>
       <Content>Content</Content>
@@ -46,29 +46,43 @@ ReactDOM.render(
         <Footer>Footer</Footer>
       </Layout>
     </Layout>
-  </div>,
+  </>,
   mountNode,
 );
 ```
 
 ```css
-.averd-layout {
-  margin-bottom: 32px;
+.averd-layout + .averd-layout {
+  margin-top: 64px;
+}
+
+.averd-layout-header,
+.averd-layout-side,
+.averd-layout-content,
+.averd-layout-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
 
 .averd-layout-header {
+  height: 64px;
   background: #c7abed;
 }
 
 .averd-layout-side {
+  width: 30%;
   background: #8e58da;
 }
 
 .averd-layout-content {
+  height: 180px;
   background: #722ed1;
 }
 
 .averd-layout-footer {
+  height: 64px;
   background: #c7abed;
 }
 ```
