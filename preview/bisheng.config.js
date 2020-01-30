@@ -21,4 +21,7 @@ module.exports = {
     };
     return config;
   },
+  htmlTemplateExtraData: {
+    BUILD_VERSION: new Date().valueOf(),
+  },
 };

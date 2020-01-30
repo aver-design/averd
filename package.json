@@ -9,8 +9,8 @@
   "module": "es/index.js",
   "scripts": {
     "build": "gulp",
-    "preview": "NODE_ENV=development bisheng start -c ./preview/bisheng.config.js",
-    "preview:build": "NODE_ENV=production bisheng build -c ./preview/bisheng.config.js",
+    "preview": "cross-env NODE_ENV=development bisheng start -c ./preview/bisheng.config.js",
+    "preview:build": "cross-env NODE_ENV=production bisheng build -c ./preview/bisheng.config.js",
     "test": "jest",
     "lint": "npm run lint:es && npm run lint:preview && npm run lint:style",
     "lint:es": "eslint --ext .ts,.tsx ./components",
@@ -71,6 +71,7 @@
     "bisheng": "^1.4.6",
     "bisheng-plugin-react": "^1.1.1",
     "bisheng-plugin-toc": "^0.4.4",
+    "cross-env": "^7.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",

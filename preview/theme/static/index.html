@@ -13,10 +13,10 @@
     <div id="react-content">
     </div>
     {% for jsFile in manifest["js"] %}
-    <script src="{{ root }}{{ jsFile }}"></script>
+    <script src="{{ root }}{{ jsFile }}?v={{ BUILD_VERSION }}"></script>
     {% endfor %}
     {% for cssFile in manifest["css"] %}
-    <link rel="stylesheet" href="{{ root }}{{ cssFile }}">
+    <link rel="stylesheet" href="{{ root }}{{ cssFile }}?v={{ BUILD_VERSION }}">
     {% endfor %}
   </body>
 </html>
