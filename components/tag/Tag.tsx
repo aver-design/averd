@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classnames from 'classnames';
 import { presetColors } from '../style/color';
 
 export interface TagProps {
@@ -6,17 +7,20 @@ export interface TagProps {
 }
 
 const Tag: React.FC<TagProps> = ({ children, color }) => {
+  const classNameList = ['averd-tag'];
+  const style: React.CSSProperties = {};
   if (presetColors.indexOf(color) !== -1) {
-    return <div className={`averd-tag averd-tag-${color}`}>{children}</div>;
+    classNameList.push(`averd-tag-${color}`);
   }
   if (/^#[0-9a-fA-F]{6}$/.test(color)) {
-    return (
-      <div className="averd-tag averd-tag-with-color" style={{ backgroundColor: color }}>
-        {children}
-      </div>
-    );
+    classNameList.push(`averd-tag-with-color`);
+    style.backgroundColor = color;
   }
-  return <div className="averd-tag">{children}</div>;
+  return (
+    <span className={classnames(classNameList)} style={style}>
+      {children}
+    </span>
+  );
 };
 
 export default Tag;
