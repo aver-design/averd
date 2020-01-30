@@ -2,12 +2,16 @@ import React from 'react';
 import less from 'less';
 
 function DemoStyle({ css, demoId }) {
-  const [wrappedCss, setWrappedCss] = React.useState('');
-  const wrappedLess = `[data-demo="${demoId}"] { ${css} }`;
+  const [wrappedCss, setWrappedCss] = React.useState(null);
   React.useEffect(() => {
-    less.render(wrappedLess).then(r => {
-      setWrappedCss(r.css);
-    });
+    if (css) {
+      const wrappedLess = `[data-demo="${demoId}"] { ${css} }`;
+      less.render(wrappedLess).then(r => {
+        setWrappedCss(r.css);
+      });
+    } else {
+      setWrappedCss(null);
+    }
   }, [css]);
   return React.createElement('style', null, wrappedCss);
 }
