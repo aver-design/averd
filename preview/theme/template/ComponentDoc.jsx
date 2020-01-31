@@ -29,20 +29,6 @@ class ComponentDoc extends React.PureComponent {
     return Object.values(demo).sort((a, b) => a.order - b.order);
   }
 
-  renderDoc() {
-    const { utils } = this.props;
-    const doc = this.getDoc();
-    if (!doc) {
-      return null;
-    }
-    return (
-      <div>
-        <h1>{doc.meta.title}</h1>
-        {utils.toReactComponent(doc.content)}
-      </div>
-    );
-  }
-
   renderDemos() {
     const { utils } = this.props;
     const demos = this.getDemos();
@@ -56,7 +42,7 @@ class ComponentDoc extends React.PureComponent {
             <div data-demo={demoId}>{demo.preview()}</div>
             <DemoStyle demoId={demoId} css={demo.sourceCode.css} />
             <div className="demo-title">{demo.meta.title}</div>
-            <div className="demo-description">{utils.toReactComponent(demo.content)}</div>
+            <div className="demo-description">{utils.toReactComponent(demo.description)}</div>
           </div>
           <div className="demo-code">
             {Object.keys(demo.sourceCode).map(language => (
@@ -74,10 +60,17 @@ class ComponentDoc extends React.PureComponent {
   }
 
   render() {
+    const { utils } = this.props;
+    const doc = this.getDoc();
+    if (!doc) {
+      return null;
+    }
     return (
       <div>
-        {this.renderDoc()}
+        <h1>{doc.meta.title}</h1>
+        {utils.toReactComponent(doc.description)}
         {this.renderDemos()}
+        {doc.api.length > 0 && utils.toReactComponent(doc.api)}
       </div>
     );
   }

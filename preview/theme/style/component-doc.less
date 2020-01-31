@@ -1,3 +1,5 @@
+@import "../../../components/style/theme.less";
+
 .demo-box {
   display: flex;
   margin-bottom: 16px;
@@ -45,5 +47,28 @@
         user-select: none;
       }
     }
+  }
+}
+
+table {
+  width: 100%;
+  empty-cells: show;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+
+  th {
+    font-weight: 500;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  th,
+  td {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+  }
+
+  td:nth-child(3) {
+    color: @primary-color;
   }
 }

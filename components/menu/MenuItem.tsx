@@ -2,8 +2,8 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 export interface MenuItemProps {
-  active?: Boolean;
-  onClick?: () => void;
+  active?: Boolean; // active will be force passed by Menu wrapper, cannot be used by users
+  onClick?: () => void; // onClick will be force passed by Menu wrapper, cannot be used by users
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({ children, active, onClick }) => {

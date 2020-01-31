@@ -2,4 +2,20 @@
   @import "./layout.less";
   @import "./component-doc.less";
   @import "./color-doc.less";
+
+  code {
+    padding: 0 3px;
+    color: @secondary-color;
+    background: .palette(@secondary-color) [@color-2];
+    border: 1px solid .palette(@secondary-color) [@color-4];
+    border-radius: @border-radius;
+  }
+
+  pre > code {
+    padding: unset;
+    color: unset;
+    background: unset;
+    border: unset;
+    border-radius: unset;
+  }
 }

@@ -5,3 +5,19 @@ title: Menu
 ---
 
 Menu for navigation.
+
+## API
+
+### Menu
+
+| Prop | Description | Type | Default Value |
+| --- | --- | --- | --- |
+| mode | Type of menu | `horizontal` \| `vertical` | |
+| defaultActiveKey | Key of current activated menu | string \| number | |
+| onClick | Called after a menu item clicked | function (key: string \| number) | |
+
+### Menu.Item
+
+| Prop | Description | Type | Default Value |
+| --- | --- | --- | --- |
+| key | Unique key for menu item | string \| number | |
