@@ -8,24 +8,26 @@ import { presetColors } from '../../style/color';
 describe('Tag', () => {
   mountTest(Tag);
 
-  describe('color test', () => {
+  describe('children test', () => {
     it('could render children', () => {
       const text = 'test'; // TODO random text
       const component = shallow(<Tag>{text}</Tag>);
       expect(component.text()).toBe(text);
     });
+  });
 
+  describe('color test', () => {
     it('should be well rendered with preset colors', () => {
       presetColors.forEach(color => {
         const component = shallow(<Tag color={color}>{color}</Tag>);
-        expect(component.hasClass(`averd-tag-${color}`));
+        expect(component.hasClass(`averd-tag-${color}`)).toBe(true);
       });
     });
 
     it('should be well rendered with custom colors', () => {
       const color = '#1f2f3f'; // TODO random hex
       const component = shallow(<Tag color={color}>{color}</Tag>);
-      expect(component.hasClass(`averd-tag-with-color`));
+      expect(component.hasClass(`averd-tag-with-color`)).toBe(true);
       expect(component.prop('style').backgroundColor).toBe(color);
     });
 
