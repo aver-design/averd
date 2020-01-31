@@ -25,4 +25,4 @@ jobs:
           build_dir: preview/dist
           fqdn: averd.guessever.me
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
