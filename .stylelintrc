@@ -6,6 +6,9 @@
   "plugins": [
     "stylelint-order"
   ],
+  "rules": {
+    "no-descending-specificity": null
+  },
   "ignoreFiles": [
     "**/*.js",
     "**/*.jsx",

@@ -1,0 +1,40 @@
+@import "../../style/theme.less";
+@import "../../style/color.less";
+
+.averd-menu {
+  display: flex;
+
+  .averd-menu-item {
+    padding: 0 24px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: @primary-color;
+    }
+
+    &.averd-menu-item-active {
+      background-color: .palette(@primary-color) [@color-1];
+      border-color: @primary-color;
+    }
+  }
+}
+
+.averd-menu-horizontal {
+  flex-direction: row;
+
+  .averd-menu-item {
+    line-height: 46px;
+    border-bottom: 2px solid transparent;
+  }
+}
+
+.averd-menu-vertical {
+  flex-direction: column;
+
+  .averd-menu-item {
+    line-height: 36px;
+    border-right: 2px solid transparent;
+  }
+}
