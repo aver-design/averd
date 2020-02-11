@@ -26,5 +26,12 @@ module.exports = {
   },
   env: {
     'jest/globals': true
-  }
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        directory: './', // use paths in ./tsconfig.json
+      },
+    },
+  },
 }

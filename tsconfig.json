@@ -12,7 +12,11 @@
     "target": "es6",
     "lib": ["dom", "es2017"],
     "skipLibCheck": true,
-    "declaration": true
+    "declaration": true,
+    "paths": {
+      "averd": ["./components"],
+      "averd/*": ["./components/*"]
+    }
   },
   "typeAcquisition": {
     "include": [
