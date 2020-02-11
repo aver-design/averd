@@ -8,13 +8,23 @@ interface IMenu extends React.FC<MenuProps> {
 type MenuKey = string | number;
 
 export interface MenuProps {
-  mode: 'horizontal' | 'vertical';
-  defaultActiveKey: MenuKey;
+  mode?: 'horizontal' | 'vertical';
+  defaultActiveKey?: MenuKey;
+  activeKey?: MenuKey;
   onClick?: (key: MenuKey) => void;
 }
 
-const Menu: IMenu = ({ children, mode = 'horizontal', defaultActiveKey, onClick }) => {
+const Menu: IMenu = ({ children, mode = 'horizontal', defaultActiveKey, activeKey, onClick }) => {
   const [currentKey, setCurrentKey] = React.useState(defaultActiveKey);
+  const isMenuActive = React.useCallback(
+    key => {
+      if (activeKey === undefined) {
+        return currentKey === key;
+      }
+      return activeKey === key;
+    },
+    [activeKey, currentKey],
+  );
 
   const handleMenuItemClick = (key: MenuKey) => {
     setCurrentKey(key);
@@ -28,7 +38,7 @@ const Menu: IMenu = ({ children, mode = 'horizontal', defaultActiveKey, onClick 
       {React.Children.map(children, (child: React.ReactElement) => {
         if (child.type === MenuItem) {
           return React.cloneElement(child, {
-            active: currentKey === child.key,
+            active: isMenuActive(child.key),
             onClick: () => handleMenuItemClick(child.key as MenuKey),
           });
         }

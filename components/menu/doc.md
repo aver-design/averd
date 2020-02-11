@@ -13,7 +13,8 @@ Menu for navigation.
 | Prop | Description | Type | Default Value |
 | --- | --- | --- | --- |
 | mode | Type of menu | `horizontal` \| `vertical` | |
-| defaultActiveKey | Key of current activated menu | string \| number | |
+| defaultActiveKey | Default key of current activated menu | string \| number | |
+| activeKey | Key of current activated menu | string \| number | |
 | onClick | Called after a menu item clicked | function (key: string \| number) | |
 
 ### Menu.Item
