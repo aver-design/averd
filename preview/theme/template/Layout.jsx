@@ -1,4 +1,5 @@
 import React from 'react';
+import { Menu } from 'averd';
 
 import '../style';
 
@@ -13,7 +14,10 @@ class Layout extends React.PureComponent {
   }
 
   renderMenus() {
-    const { router } = this.props;
+    const {
+      location: { pathname },
+      router,
+    } = this.props;
     const { componentList } = this.state;
     const menus = [
       {
@@ -27,11 +31,22 @@ class Layout extends React.PureComponent {
         path: `/components/${o.key}`,
       })),
     ];
-    return menus.map(o => (
-      <div key={o.key} className="side-item" onClick={() => router.push(o.path)}>
-        {o.title}
-      </div>
-    ));
+    console.log(this.props);
+    const handleMenuClick = key => {
+      const menu = menus.find(o => o.key === key);
+      router.push(menu.path);
+    };
+    const activeMenuKey = (() => {
+      const menu = menus.find(o => new RegExp(pathname).test(o.path));
+      return menu.key;
+    })();
+    return (
+      <Menu mode="vertical" activeKey={activeMenuKey} onClick={handleMenuClick}>
+        {menus.map(o => (
+          <Menu.Item key={o.key}>{o.title}</Menu.Item>
+        ))}
+      </Menu>
+    );
   }
 
   render() {
