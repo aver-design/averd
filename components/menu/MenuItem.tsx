@@ -7,7 +7,7 @@ export interface MenuItemProps {
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({ children, active, onClick }) => {
-  const classList = ['averd-menu', 'averd-menu-item'];
+  const classList = ['averd-menu-item'];
   if (active) {
     classList.push('averd-menu-item-active');
   }

@@ -18,7 +18,7 @@ export interface MenuProps {
 const Menu: IMenu = ({
   children,
   style,
-  mode = 'horizontal',
+  mode = 'vertical',
   defaultActiveKey,
   activeKey,
   onClick,

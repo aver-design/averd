@@ -11,13 +11,13 @@ import { Menu } from 'averd';
 ReactDOM.render(
   <>
     <h4>Horizontal</h4>
-    <Menu defaultActiveKey="item1">
+    <Menu mode="horizontal" defaultActiveKey="item1">
       <Menu.Item key="item1">Menu 1</Menu.Item>
       <Menu.Item key="item2">Menu 2</Menu.Item>
       <Menu.Item key="item3">Menu 3</Menu.Item>
     </Menu>
     <h4>Vertical</h4>
-    <Menu mode="vertical" defaultActiveKey="item1">
+    <Menu defaultActiveKey="item1">
       <Menu.Item key="item1">Menu 1</Menu.Item>
       <Menu.Item key="item2">Menu 2</Menu.Item>
       <Menu.Item key="item3">Menu 3</Menu.Item>
