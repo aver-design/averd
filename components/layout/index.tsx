@@ -1,30 +1,34 @@
 import * as React from 'react';
 import classnames from 'classnames';
 
-const Header: React.FC = ({ children }) => {
-  return <div className="averd-layout-header">{children}</div>;
-};
+export interface LayoutProps {
+  style?: React.CSSProperties;
+}
 
-const Side: React.FC = ({ children }) => {
-  return <div className="averd-layout-side">{children}</div>;
-};
+function generateChildLayout(className: string) {
+  const ChildLayout: React.FC<LayoutProps> = ({ children, style }) => {
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    );
+  };
+  return ChildLayout;
+}
 
-const Content: React.FC = ({ children }) => {
-  return <div className="averd-layout-content">{children}</div>;
-};
+const Header = generateChildLayout('averd-layout-header');
+const Side = generateChildLayout('averd-layout-side');
+const Content = generateChildLayout('averd-layout-content');
+const Footer = generateChildLayout('averd-layout-footer');
 
-const Footer: React.FC = ({ children }) => {
-  return <div className="averd-layout-footer">{children}</div>;
-};
-
-interface ILayout extends React.FC {
+interface ILayout extends React.FC<LayoutProps> {
   Header: React.ReactNode;
   Side: React.ReactNode;
   Content: React.ReactNode;
   Footer: React.ReactNode;
 }
 
-const Layout: ILayout = ({ children }) => {
+const Layout: ILayout = ({ children, style }) => {
   const hasSide = (() => {
     if (children instanceof Array) {
       return children.some((child: React.ReactElement) => child && child.type === Side);
@@ -32,7 +36,11 @@ const Layout: ILayout = ({ children }) => {
     return false;
   })();
   const className = classnames('averd-layout', { 'averd-layout-has-side': hasSide });
-  return <div className={className}>{children}</div>;
+  return (
+    <div className={className} style={style}>
+      {children}
+    </div>
+  );
 };
 
 Layout.Header = Header;

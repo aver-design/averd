@@ -41,7 +41,12 @@ class Layout extends React.PureComponent {
       return menu.key;
     })();
     return (
-      <Menu mode="vertical" activeKey={activeMenuKey} onClick={handleMenuClick}>
+      <Menu
+        mode="vertical"
+        activeKey={activeMenuKey}
+        onClick={handleMenuClick}
+        style={{ height: '100%' }}
+      >
         {menus.map(o => (
           <Menu.Item key={o.key}>{o.title}</Menu.Item>
         ))}

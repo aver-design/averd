@@ -12,4 +12,5 @@ Tag for classification.
 
 | Prop | Description | Type | Default Value |
 | --- | --- | --- | --- |
+| style | Style of the root node | Object | |
 | color | color of tag | string | |
