@@ -1,0 +1,27 @@
+@import "../../style/theme.less";
+
+.averd-layout {
+  position: relative;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+
+  &.averd-layout-has-side {
+    flex-direction: row;
+  }
+
+  .averd-layout-header {
+    height: 64px;
+  }
+
+  .averd-layout-content {
+    flex: auto;
+    padding: 24px 32px;
+  }
+
+  .averd-layout-footer {
+    padding: 32px;
+    text-align: center;
+    background-color: @background-color;
+  }
+}

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Menu } from 'averd';
+import { Layout, Menu } from 'averd';
 
 import '../style';
 
-class Layout extends React.PureComponent {
+class DocLayout extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -31,7 +31,6 @@ class Layout extends React.PureComponent {
         path: `/components/${o.key}`,
       })),
     ];
-    console.log(this.props);
     const handleMenuClick = key => {
       const menu = menus.find(o => o.key === key);
       router.push(menu.path);
@@ -45,7 +44,7 @@ class Layout extends React.PureComponent {
         mode="vertical"
         activeKey={activeMenuKey}
         onClick={handleMenuClick}
-        style={{ height: '100%' }}
+        style={{ height: '100%', width: 256 }}
       >
         {menus.map(o => (
           <Menu.Item key={o.key}>{o.title}</Menu.Item>
@@ -58,16 +57,23 @@ class Layout extends React.PureComponent {
     const { children, router } = this.props;
     return (
       <div className="averd-preview">
-        <div className="header">
-          <div className="header-item" onClick={() => router.push('/')}>
-            Aver Design
-          </div>
-        </div>
-        <div className="side">{this.renderMenus()}</div>
-        <div className="content">{children}</div>
+        <Layout>
+          <Layout.Header>
+            <div className="header-item" onClick={() => router.push('/')}>
+              Aver Design
+            </div>
+          </Layout.Header>
+          <Layout>
+            <Layout.Side>{this.renderMenus()}</Layout.Side>
+            <Layout>
+              <Layout.Content>{children}</Layout.Content>
+              <Layout.Footer>Copyright &copy; 2020 Averd - A version of design</Layout.Footer>
+            </Layout>
+          </Layout>
+        </Layout>
       </div>
     );
   }
 }
 
-export default Layout;
+export default DocLayout;
