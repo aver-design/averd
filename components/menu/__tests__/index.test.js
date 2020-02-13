@@ -74,7 +74,7 @@ describe('MenuItem', () => {
   });
 
   describe('active test', () => {
-    it('should be well rendered with mode type', () => {
+    it('should be well rendered with active status', () => {
       expect(shallow(<MenuItem />).hasClass('averd-menu-item-active')).toBe(false);
       expect(shallow(<MenuItem active={false} />).hasClass('averd-menu-item-active')).toBe(false);
       expect(shallow(<MenuItem active />).hasClass('averd-menu-item-active')).toBe(true);
