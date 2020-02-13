@@ -29,6 +29,23 @@ describe('Menu', () => {
       expect(component.childAt(1).prop('active')).toBe(false);
     });
 
+    it('should be controlled by activeKey', () => {
+      const component = shallow(
+        <Menu activeKey="item1">
+          <Menu.Item key="item1">item1</Menu.Item>
+          <Menu.Item key="item2">item2</Menu.Item>
+        </Menu>,
+      );
+      expect(component.childAt(0).prop('active')).toBe(true);
+      expect(component.childAt(1).prop('active')).toBe(false);
+      component.childAt(1).simulate('click');
+      expect(component.childAt(0).prop('active')).toBe(true);
+      expect(component.childAt(1).prop('active')).toBe(false);
+      component.setProps({ activeKey: 'item2' });
+      expect(component.childAt(0).prop('active')).toBe(false);
+      expect(component.childAt(1).prop('active')).toBe(true);
+    });
+
     it('should trigger onClick event when menu item clicked', () => {
       let clickedKey = null;
       const onClick = jest.fn().mockImplementation(key => {
